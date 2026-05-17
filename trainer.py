@@ -51,12 +51,11 @@ def main():
             all_results[universe_name] = {"top_etfs": []}
             continue
 
+        # Store full scores for all ETFs
+        full_scores = {ticker: {"score": score, "best_window": win} for ticker, (score, win) in best_per_etf.items()}
         sorted_etfs = sorted(best_per_etf.items(), key=lambda x: x[1][0], reverse=True)
-        top_etfs = []
-        full_scores = {}
-        for ticker, (pred, win) in sorted_etfs[:config.TOP_N]:
-            top_etfs.append({"ticker": ticker, "pred_return": float(pred), "best_window": win})
-            full_scores[ticker] = {"score": float(pred), "best_window": win}
+        top_etfs = [{"ticker": ticker, "pred_return": float(score), "best_window": win} for ticker, (score, win) in sorted_etfs[:config.TOP_N]]
+
         print(f"  Top 3 ETFs: {[e['ticker'] for e in top_etfs]}")
         all_results[universe_name] = {
             "top_etfs": top_etfs,
