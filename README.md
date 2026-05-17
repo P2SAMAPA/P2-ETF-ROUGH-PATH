@@ -1,32 +1,18 @@
-# P2-ETF-ROUGH-PATH
+# Rough Path SDE Engine
 
-Welcome to the P2-ETF-ROUGH-PATH repository!
+Simulates fractional Brownian motion (Hurst = 0.3) and solves controlled rough differential equations using Davie's expansion. Models rough volatility without discretisation error. Predicts next‑day ETF returns.
 
-## Overview
+- **Windows:** 63, 252, 504, 1008, 2016 days (best per ETF)
+- **Hurst exponent:** 0.3 (rough regime)
+- **Davie expansion order:** 2
+- **Output:** top 3 ETFs per universe by predicted return
 
-This repository contains project resources and documentation for the ETF (Exchange-Traded Fund) analysis and development.
+Runs daily on GitHub Actions.
 
-## Getting Started
-
-To get started with this project, clone the repository and explore the contents.
+## Local execution
 
 ```bash
-git clone https://github.com/P2SAMAPA/P2-ETF-ROUGH-PATH.git
-cd P2-ETF-ROUGH-PATH
-```
-
-## Project Structure
-
-- Documentation and project files are organized in this repository.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests.
-
-## License
-
-This project is open source and available under appropriate licensing.
-
-## Contact
-
-For more information, visit the [repository](https://github.com/P2SAMAPA/P2-ETF-ROUGH-PATH).
+pip install -r requirements.txt
+export HF_TOKEN=<your_token>
+python trainer.py
+streamlit run streamlit_app.py
