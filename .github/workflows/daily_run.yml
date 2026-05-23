@@ -2,7 +2,7 @@ name: Daily Rough Path SDE Run
 
 on:
   schedule:
-    - cron: '15 00 * * 1-5'
+    - cron: '15 00 * * 1-6'
   workflow_dispatch:
 
 jobs:
